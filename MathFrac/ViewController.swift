@@ -19,6 +19,10 @@ class ViewController: UIViewController {
     var count_ok : Int = 0
     let html_start = "<!DOCTYPE html><html><head><title>MathJax TeX Test Page</title><script type=\"text/javascript\" async  src=\"my-mathjax/MathJax.js?config=TeX-AMS_CHTML\"></script></head><body>  <div style=\"font-size: 100pt; color: black;\">$$";
     let html_end = "$$</div></body></html>";
+    var n1 = 0
+    var n2 = 0
+    var d1 = 0
+    var d2 = 0
     
     
     @IBOutlet weak var webview: WKWebView!
@@ -74,9 +78,9 @@ class ViewController: UIViewController {
     }
     
     func help_me_addition(){
-        var aide = "Le facteur est " + String(raw_data[4])+".\n";
-        if (raw_data[5] != 1){
-            aide += "\nIl faudra simplifier par "+String(raw_data[5]) + "."
+        var aide = "Le facteur est " + String(d2/d1)+".\n";
+        if (d2 != raw_data[1]){
+            aide += "\nIl faudra simplifier la fraction."
         }
         // create the alert
         let alert = UIAlertController(title: "Aide", message: aide, preferredStyle: UIAlertController.Style.alert)
@@ -145,10 +149,10 @@ class ViewController: UIViewController {
         let numerateur = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
         let denominateur = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
         let f = facteur.randomElement()!;
-        let n1 = numerateur.randomElement()!;
-        let n2 = numerateur.randomElement()!;
-        let d1 = denominateur.randomElement()!;
-        let d2 = d1*f;
+        n1 = numerateur.randomElement()!;
+        n2 = numerateur.randomElement()!;
+        d1 = denominateur.randomElement()!;
+        d2 = d1*f;
         let signe = ["-","+"].randomElement()!;
         
         question = "\\dfrac{" + String(n1) + "}{"+String(d1)+"} "+signe+" \\dfrac{"+String(n2)+"}{"+String(d2)+"}"
@@ -158,7 +162,7 @@ class ViewController: UIViewController {
         
         answer += "& = " + "\\dfrac"
         answer += "{" + String(n1) + "\\times" + String(f) + "}"
-        answer += "{" + String(n1) + "\\times" + String(f) + "}"
+        answer += "{" + String(d1) + "\\times" + String(f) + "}"
         answer += signe + "\\dfrac{"+String(n2)+"}{"+String(d2) + "}\\\\"
         
         answer += " & = " + "\\dfrac{" + String(n1*f) + "}{"+String(d1*f)+"} "+signe+" \\dfrac{"+String(n2)+"}{"+String(d2)+"} \\\\"
@@ -185,10 +189,10 @@ class ViewController: UIViewController {
     func multiplication(){
         let numerateur = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
         let denominateur = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-        let n1 = numerateur.randomElement()!;
-        let n2 = numerateur.randomElement()!;
-        let d1 = denominateur.randomElement()!;
-        let d2 = denominateur.randomElement()!;
+        n1 = numerateur.randomElement()!;
+        n2 = numerateur.randomElement()!;
+        d1 = denominateur.randomElement()!;
+        d2 = denominateur.randomElement()!;
         
         question = "\\dfrac{" + String(n1) + "}{"+String(d1)+"} \\times \\dfrac{"+String(n2)+"}{"+String(d2)+"}";
         
@@ -210,10 +214,10 @@ class ViewController: UIViewController {
     func division(){
         let numerateur = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
         let denominateur = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-        let n1 = numerateur.randomElement()!;
-        let n2 = numerateur.randomElement()!;
-        let d1 = denominateur.randomElement()!;
-        let d2 = denominateur.randomElement()!;
+        n1 = numerateur.randomElement()!;
+        n2 = numerateur.randomElement()!;
+        d1 = denominateur.randomElement()!;
+        d2 = denominateur.randomElement()!;
         
         question = "\\dfrac{" + String(n1) + "}{"+String(d1)+"} \\div \\dfrac{"+String(n2)+"}{"+String(d2)+"}";
         
